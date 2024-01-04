@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default function TextFormat(props) {
     const [text, setText] = useState('');
@@ -42,7 +43,6 @@ export default function TextFormat(props) {
         let newText = '';
         setText(newText);
         props.showAlert("Text is Cleared", "danger");
-
     }
     const wordCount = text.trim().split(/\s+/).filter(Boolean).length;
     const charCount = text.replace(/\s/g, "").length;
@@ -59,7 +59,9 @@ export default function TextFormat(props) {
                 <button disabled={text.length === 0} className={`btn btn-${props.mode === 'light' ? 'dark' : 'light'} mx-1 my-1`} onClick={handleUpperCase}>Convert to Upper-Case</button>
                 <button disabled={text.length === 0} className={`btn btn-${props.mode === 'light' ? 'dark' : 'light'} mx-1 my-1`} onClick={handleCopyCase}>Copy Text</button>
                 <button disabled={text.length === 0} className={`btn btn-${props.mode === 'light' ? 'dark' : 'light'} mx-1 my-1`} onClick={handleClearCase}>Clear Text</button>
-
+                <NavLink to="/Speech_Recognizer">
+                <button disabled={text.length === 0} className={`btn btn-${props.mode === 'light' ? 'dark' : 'light'} mx-1 my-1`}>Speech to Text</button>
+                </NavLink>
             </div>
             <div className="container mx-1 mb-6">
                 <h1 className={`text-${props.mode === 'light' ? 'dark' : 'light'}`}>Your Text Summary</h1>
